@@ -12,10 +12,10 @@ def main():
     # the width of the bars: can also be len(x) sequence
     width = 0.35
 
-    # describe where to display p1
-    p1 = plt.bar(ind, localnetMeans, width)
+    # describe where to display p
     # stack p2 on top of p1
-    p2 = plt.bar(ind, wanMeans, width, bottom=localnetMeans)
+    p1 = plt.line(ind, localnetMeans, width)
+    p2 = plt.line(ind, wanMeans, width, bottom=localnetMeans)
 
     # Describe the table metadata
     plt.ylabel("Length of Outage (mins)")
