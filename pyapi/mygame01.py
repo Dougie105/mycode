@@ -10,15 +10,13 @@ RPG Game
 Commands:
   go [direction]
   get [item]
-
-Objective:
-  Get to the garden with the a key and a potion to win! Avoid the monster!
 ''')
 
 def showStatus():
   #print the player's current status
   print('---------------------------')
   print('You are in the ' + currentRoom)
+
   #print the current inventory
   print('Inventory : ' + str(inventory))
   #print an item if there is one
@@ -35,29 +33,35 @@ rooms = {
             'Hall' : { 
                   'south' : 'Kitchen',
                   'east' : 'Dining Room',
-                  'west' : 'Bathroom',
-                  'item' : 'key',
+                  'west' : 'Vault',
+                  'item' : 'key'
                 },
-
-            'Bathroom' : {
-                'east' : 'Hall',
-                'item' : 'MonsterMask',
+            'Dining Room' : {
+                'west' : 'Hall',
+                'south' : 'Garden',
+                'item' : "potion"
                 },
 
             'Kitchen' : {
                   'north' : 'Hall',
                   'east' : 'Garden',
-                  'item' : 'monster',
-                },
-            'Dining Room' : {
-                'west' : 'Hall',
-                'south' : 'Bathroom',
-                'item' : 'potion',
-
+                  'item' : 'hornet',
                 },
             'Garden' : {
-                'north' : 'Dining Room',
                 'west' : 'Kitchen',
+                'north' : 'Dining Room',
+                'south' : 'Portal'
+                },
+            'Portal' : {
+                'north' : 'Hall',
+                'south' : 'Hall',
+                'west' : 'Dining Room',
+                'east' : 'Kitchen',
+                'item' : 'raid'
+                },
+            'Vault' : {
+                'back' : 'Hall',
+                '7357' : 'Portal'
                 }
          }
 
@@ -97,27 +101,36 @@ while True:
   if move[0] == 'get' :
     #if the room contains an item, and the item is the one they want to get
     if "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item']:
-      #add the item to their inventory
-      inventory += [move[1]]
-      #display a helpful message
-      print(move[1] + ' got!')
-      #delete the item from the room
-      del rooms[currentRoom]['item']
+        #add the item to their inventory
+        inventory += [move[1]]
+        #display a helpful message
+        print(move[1] + ' got!')
+        #delete the item from the room
+        del rooms[currentRoom]['item']
     #otherwise, if the item isn't there to get
     else:
       #tell them they can't get it
       print('Can\'t get ' + move[1] + '!')
 
-  if currentRoom == 'Kitchen' and "MonsterMask" in inventory:
-      print('The monster is running away from you! You are safe for now...')
 
-    ## If a player enters a room with a monster
-  if 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
-    print('A monster has got you... GAME OVER!')
+  if currentRoom == 'Portal':
+    print('You see the faint numbers 7357 in the portal lights')
+
+  if currentRoom == 'Kitchen' and 'raid' in inventory:
+    print('The hornet curled up and died. You dont have to burn down your home after all!')
     break
 
-    ## Define how a player can win
+  ## If a player enters a room with a monster
+  if 'item' in rooms[currentRoom] and 'hornet' in rooms[currentRoom]['item']:
+    print('A hornet has got you... GAME OVER!')
+    break
+
+  ## Define how a player can win
   if currentRoom == 'Garden' and 'key' in inventory and 'potion' in inventory:
     print('You escaped the house with the ultra rare key and magic potion... YOU WIN!')
+    break
+
+  if currentRoom == 'Kitchen' and 'raid' in inventory:
+    print('The hornet curled up and died. You dont have to burn down your home after all!')
     break
 
