@@ -1,0 +1,50 @@
+{
+  "Hall": {
+    "south": "Kitchen",
+    "east": "Dining Room",
+    "west": "Vault",
+    "item": "key",
+    "inspect": {
+      "chair": "nothing",
+      "rug": {
+        "item": "loose tile",
+        "item": "blacklight"
+      },
+      "picture": {
+        "item": "crowbar"
+      }
+    }
+  },
+  "Dining Room": {
+    "west": "Hall",
+    "south": "Garden",
+    "item": "paper"
+  },
+  "Kitchen": {
+    "north": "Hall",
+    "east": "Garden",
+    "item": "hornet"
+  },
+  "Garden": {
+    "west": "Kitchen",
+    "north": "Dining Room",
+    "south": "Portal"
+  },
+  "Portal": {
+    "north": "murderHornetNest",
+    "south": "Hall",
+    "west": "Dining Room",
+    "east": "Kitchen",
+    "item": "raid"
+  },
+  "Vault": {
+    "back": "Hall"
+  },
+  "OpenVault": {
+    "item": "super_raid",
+    "back": "Vault"
+  },
+  "murderHornetNest": {
+    "item": "A large colony of Murder Hornets"
+  }
+}
