@@ -111,7 +111,7 @@ python-openstackclient==3.14.2
 pytz==2018.3
 pyxattr==0.6.0
 pyxdg==0.25
-PyYAML==5.3.1
+PyYAML==5.4
 repoze.lru==0.7
 requests==2.24.0
 requests-unixsocket==0.1.5
