@@ -76,7 +76,7 @@ oslo.serialization==2.24.0
 oslo.utils==3.35.0
 ovs==2.13.0
 PAM==0.4.2
-paramiko==2.7.1
+paramiko==2.10.1
 pbr==5.4.5
 Pillow==5.1.0
 positional==1.1.1
