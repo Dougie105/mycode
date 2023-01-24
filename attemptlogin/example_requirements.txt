@@ -1,4 +1,4 @@
-ansible==2.9.10
+ansible==7.0.0
 appdirs==1.4.4
 asn1crypto==0.24.0
 attrs==19.3.0
